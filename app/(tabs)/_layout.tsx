@@ -1,40 +1,41 @@
 import {Tabs} from 'expo-router';
 import React from 'react';
-
-import {TabBarIcon} from '@/components/navigation/TabBarIcon';
-import {Colors} from '@/constants/Colors';
-import {useColorScheme} from '@/hooks/useColorScheme';
+import Ionicons from '@expo/vector-icons/Ionicons';
+import {FontAwesome} from '@expo/vector-icons';
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
         headerShown: false,
+        tabBarStyle: {height: 55},
       }}
     >
       <Tabs.Screen
-        name="index"
+        name="user-account"
         options={{
-          title: 'Home',
-          tabBarIcon: ({color, focused}) => (
-            <TabBarIcon
-              name={focused ? 'home' : 'home-outline'}
+          title: 'حساب کاربری',
+          tabBarLabelStyle: {fontFamily: 'Vazir', marginBottom: 3},
+          tabBarIcon: ({color, focused, size}) => (
+            <FontAwesome
+              name={focused ? 'user' : 'user-o'}
               color={color}
+              size={size}
             />
           ),
         }}
       />
+
       <Tabs.Screen
-        name="explore"
+        name="index"
         options={{
-          title: 'Explore',
-          tabBarIcon: ({color, focused}) => (
-            <TabBarIcon
-              name={focused ? 'code-slash' : 'code-slash-outline'}
+          title: 'صفحه‌ی اصلی',
+          tabBarLabelStyle: {fontFamily: 'Vazir', marginBottom: 3},
+          tabBarIcon: ({color, focused, size}) => (
+            <Ionicons
+              name={focused ? 'home' : 'home-outline'}
               color={color}
+              size={size}
             />
           ),
         }}
