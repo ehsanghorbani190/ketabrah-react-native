@@ -18,6 +18,7 @@ export default function RootLayout() {
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
     Vazir: require('../assets/fonts/Vazir.ttf'),
+    VazirBold: require('../assets/fonts/Vazir-Bold.ttf'),
   });
 
   useEffect(() => {
