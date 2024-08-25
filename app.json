@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "splash": {
       "image": "./assets/images/logo_with_typography.png",
-      "resizeMode": "contain"
+      "resizeMode": "contain",
+      "backgroundColor": "#F9F9F9"
     },
     "ios": {
       "supportsTablet": false
