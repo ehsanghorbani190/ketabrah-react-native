@@ -11,6 +11,7 @@ import {useTheme} from '@react-navigation/native';
 import {Text} from 'react-native';
 import {Image} from 'expo-image';
 import {CustomColors} from '@/constants/Colors';
+import images from '@/constants/Images';
 
 export default function TabLayout() {
   const theme = useTheme();
@@ -31,7 +32,7 @@ export default function TabLayout() {
         headerTitle: args =>
           args.children === 'خانه' ? (
             <Image
-              source={require('@/assets/images/typography.png')}
+              source={images.typography}
               style={{
                 width: 65,
                 height: 25,
