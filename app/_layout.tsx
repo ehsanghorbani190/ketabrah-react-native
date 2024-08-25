@@ -2,13 +2,14 @@ import {ThemeProvider} from '@react-navigation/native';
 import {useFonts} from 'expo-font';
 import {Stack} from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import {useEffect} from 'react';
+import React, {useEffect} from 'react';
 import 'react-native-reanimated';
 
 import {useColorScheme} from '@/hooks/useColorScheme';
 import {Provider} from 'react-redux';
 import {store} from '@/core/state/store';
 import {DarkTheme, LightTheme} from '@/constants/Colors';
+import StackScreenHeader from '@/components/StackScreenHeader';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -35,6 +36,14 @@ export default function RootLayout() {
     <Provider store={store}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
         <Stack>
+          <Stack.Screen
+            name="authentication-page"
+            options={{
+              header: header_props => (
+                <StackScreenHeader title="ورود | ثبت‌نام" {...header_props} />
+              ),
+            }}
+          />
           <Stack.Screen name="(tabs)" options={{headerShown: false}} />
           <Stack.Screen name="+not-found" />
         </Stack>
