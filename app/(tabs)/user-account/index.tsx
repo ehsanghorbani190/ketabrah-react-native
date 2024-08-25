@@ -1,5 +1,9 @@
-import ThemedText from '@/components/ThemedText';
-
+import ThemedView from '@/components/ThemedView';
+import ThemedButton from '@/components/ThemedButton';
 export default function UserAccountScreen() {
-  return <ThemedText>اینجا حساب کاربری شماست</ThemedText>;
+  return (
+    <ThemedView>
+      <ThemedButton title={'ثبت نام'} />
+    </ThemedView>
+  );
 }
