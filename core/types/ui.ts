@@ -1,4 +1,12 @@
-import {PressableProps, StyleProp, TextStyle, ViewStyle} from 'react-native';
+import {
+  PressableProps,
+  StyleProp,
+  TextInputProps,
+  TextProps,
+  TextStyle,
+  ViewProps,
+  ViewStyle,
+} from 'react-native';
 import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 
 export interface IThemedButtonProps extends PressableProps {
@@ -15,4 +23,11 @@ export interface ITabBarLabelProps {
 
 export interface IStackScreenHeaderProps extends NativeStackHeaderProps {
   title: string;
+}
+
+export interface IInputWithLabelProps {
+  input_props: TextInputProps;
+  container_props?: ViewProps;
+  label_props?: TextProps;
+  label?: string;
 }
