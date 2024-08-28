@@ -37,7 +37,7 @@ export default function RootLayout() {
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
         <Stack>
           <Stack.Screen
-            name="authentication-page"
+            name="authentication"
             options={{
               header: header_props => (
                 <StackScreenHeader title="ورود | ثبت‌نام" {...header_props} />

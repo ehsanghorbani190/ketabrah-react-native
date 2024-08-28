@@ -6,6 +6,7 @@ import {StyleSheet} from 'react-native';
 import ThemedText from '@/components/ThemedText';
 import {useSelector} from 'react-redux';
 import {authUserSelector} from '@/core/state/slices/authSlice';
+import {router} from 'expo-router';
 export default function UserAccountScreen() {
   const user = useSelector(authUserSelector);
   return user === null ? (
@@ -18,6 +19,9 @@ export default function UserAccountScreen() {
         title="ورود | ثبت‌نام"
         buttonStyle={styles.button}
         textStyle={styles.buttonText}
+        onPress={e => {
+          router.push('/authentication');
+        }}
       />
     </ThemedView>
   ) : (
