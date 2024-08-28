@@ -19,7 +19,7 @@ export default function StackScreenHeader(props: IStackScreenHeaderProps) {
         <Ionicons
           name={'arrow-forward'}
           style={{color: theme.colors.primary}}
-          size={30}
+          size={20}
         />
       </Pressable>
     </View>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontFamily: 'VazirBold',
+    fontFamily: 'Vazir',
     paddingRight: 12,
     fontSize: 16,
     display: 'flex',
