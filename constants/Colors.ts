@@ -25,8 +25,11 @@ export const DarkTheme: Theme = {
 };
 
 export const CustomColors = {
-  light: {},
+  light: {
+    input_background: '#dddddd',
+  },
   dark: {
+    input_background: '#333333',
     inactive_gray: '#999999',
   },
 };
