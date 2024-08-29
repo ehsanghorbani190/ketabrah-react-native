@@ -8,6 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import {NativeStackHeaderProps} from '@react-navigation/native-stack';
+import {Theme} from '@react-navigation/native';
 
 export interface IThemedButtonProps extends PressableProps {
   textStyle?: StyleProp<TextStyle>;
@@ -30,4 +31,13 @@ export interface IInputWithLabelProps {
   container_props?: ViewProps;
   label_props?: TextProps;
   label?: string;
+  error_props?: TextProps;
+  error?: null | string;
+}
+export interface IExtendedTheme extends Theme {
+  other_colors?: {
+    input_background: string;
+    error: string;
+    inactive_gray: string;
+  };
 }

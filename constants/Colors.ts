@@ -1,6 +1,6 @@
-import {Theme} from '@react-navigation/native';
+import {IExtendedTheme} from '@/core/types/ui';
 
-export const LightTheme: Theme = {
+export const LightTheme: IExtendedTheme = {
   dark: false,
   colors: {
     primary: '#5E9527',
@@ -10,9 +10,14 @@ export const LightTheme: Theme = {
     border: '#BDBDBD',
     notification: '#F9F9F9',
   },
+  other_colors: {
+    input_background: '#dddddd',
+    error: '#FF3F34',
+    inactive_gray: '#333333',
+  },
 };
 
-export const DarkTheme: Theme = {
+export const DarkTheme: IExtendedTheme = {
   dark: true,
   colors: {
     primary: '#4CAF50',
@@ -22,14 +27,9 @@ export const DarkTheme: Theme = {
     border: '#424242',
     notification: '#121212',
   },
-};
-
-export const CustomColors = {
-  light: {
-    input_background: '#dddddd',
-  },
-  dark: {
+  other_colors: {
     input_background: '#333333',
     inactive_gray: '#999999',
+    error: '#FF5E57',
   },
 };

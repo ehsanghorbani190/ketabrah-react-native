@@ -10,11 +10,11 @@ import TabBarLabel from '@/components/TabBarLabel';
 import {useTheme} from '@react-navigation/native';
 import {Text} from 'react-native';
 import {Image} from 'expo-image';
-import {CustomColors} from '@/constants/Colors';
 import images from '@/constants/Images';
+import {IExtendedTheme} from '@/core/types/ui';
 
 export default function TabLayout() {
-  const theme = useTheme();
+  const theme: IExtendedTheme = useTheme();
   return (
     <Tabs
       screenOptions={{
@@ -23,9 +23,7 @@ export default function TabLayout() {
           borderTopWidth: 0,
           elevation: 10,
         },
-        tabBarInactiveTintColor: theme.dark
-          ? CustomColors.dark.inactive_gray
-          : theme.colors.text,
+        tabBarInactiveTintColor: theme.other_colors?.inactive_gray,
         headerTitleAlign: 'center',
         headerShadowVisible: true,
         headerStyle: {elevation: 10},
