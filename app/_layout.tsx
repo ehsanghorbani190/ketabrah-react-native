@@ -14,6 +14,7 @@ import {
   auth_setPassword,
   auth_setUsername,
 } from '@/core/state/slices/authSlice';
+import useUserFromStorage from '@/hooks/useUserFromStorage';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -25,12 +26,13 @@ export default function RootLayout() {
     Vazir: require('../assets/fonts/Vazir.ttf'),
     VazirBold: require('../assets/fonts/Vazir-Bold.ttf'),
   });
+  const user_loaded = useUserFromStorage();
 
   useEffect(() => {
-    if (loaded) {
+    if (loaded && user_loaded) {
       SplashScreen.hideAsync();
     }
-  }, [loaded]);
+  }, [loaded, user_loaded]);
 
   if (!loaded) {
     return null;
