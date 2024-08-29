@@ -20,16 +20,13 @@ import {openURL} from 'expo-linking';
 import {useTheme} from '@react-navigation/native';
 import usernameValidator from '@/core/helpers/usernameValidator';
 import {router} from 'expo-router';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 export default function UsernamePage() {
   const username = useSelector(authUsernameSelector);
   const dispatch = useDispatch();
   const [error, setError] = useState<null | string>(null);
   const theme = useTheme();
 
-  useEffect(() => {
-    dispatch(auth_setUsername(''));
-  }, []);
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
