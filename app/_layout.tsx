@@ -10,6 +10,10 @@ import {Provider} from 'react-redux';
 import {store} from '@/core/state/store';
 import {DarkTheme, LightTheme} from '@/constants/Colors';
 import StackScreenHeader from '@/components/StackScreenHeader';
+import {
+  auth_setPassword,
+  auth_setUsername,
+} from '@/core/state/slices/authSlice';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -40,7 +44,14 @@ export default function RootLayout() {
             name="authentication"
             options={{
               header: header_props => (
-                <StackScreenHeader title="ورود | ثبت‌نام" {...header_props} />
+                <StackScreenHeader
+                  title="ورود | ثبت‌نام"
+                  resetState={() => {
+                    store.dispatch(auth_setUsername(''));
+                    store.dispatch(auth_setPassword(''));
+                  }}
+                  {...header_props}
+                />
               ),
             }}
           />

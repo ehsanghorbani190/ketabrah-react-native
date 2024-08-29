@@ -13,6 +13,7 @@ export default function StackScreenHeader(props: IStackScreenHeaderProps) {
       <Pressable
         style={styles.button}
         onPress={e => {
+          if (props.resetState) props.resetState();
           props.navigation.goBack();
         }}
       >
