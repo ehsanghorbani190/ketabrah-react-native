@@ -24,6 +24,7 @@ export interface ITabBarLabelProps {
 
 export interface IStackScreenHeaderProps extends NativeStackHeaderProps {
   title: string;
+  resetState?: Function;
 }
 
 export interface IInputWithLabelProps {
