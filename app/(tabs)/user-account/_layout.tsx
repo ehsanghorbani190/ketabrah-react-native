@@ -1,9 +1,5 @@
-import {Stack} from 'expo-router';
+import UserAccountScreen from '@/app/(tabs)/user-account/index';
 
 export default function UserAccountLayout() {
-  return (
-    <Stack>
-      <Stack.Screen name="index" options={{headerShown: false}} />
-    </Stack>
-  );
+  return <UserAccountScreen />;
 }
