@@ -1,19 +1,20 @@
-import {IInputWithLabelProps} from '@/core/types/ui';
+import {IExtendedTheme, IInputWithLabelProps} from '@/core/types/ui';
 import {useTheme} from '@react-navigation/native';
 import {StyleSheet, TextInput} from 'react-native';
 import ThemedView from '@/components/ThemedView';
 import ThemedText from '@/components/ThemedText';
-import {CustomColors} from '@/constants/Colors';
 import {useState} from 'react';
 
 export default function InputWithLabel(props: IInputWithLabelProps) {
-  const theme = useTheme();
+  const theme: IExtendedTheme = useTheme();
   const [focused, setIsFocused] = useState(false);
 
-  const {label, container_props, label_props, input_props} = props;
+  const {label, error, error_props, container_props, label_props, input_props} =
+    props;
   const {style: container_styles, ...rest_container_props} =
     container_props || {};
   const {style: label_styles, ...rest_label_props} = label_props || {};
+  const {style: error_styles, ...rest_error_props} = error_props || {};
   const {
     style: input_styles,
     onFocus,
@@ -36,11 +37,10 @@ export default function InputWithLabel(props: IInputWithLabelProps) {
       <TextInput
         style={[
           {
-            backgroundColor: (theme.dark
-              ? CustomColors.dark
-              : CustomColors.light
-            ).input_background,
-            borderColor: theme.colors.primary,
+            backgroundColor: theme.other_colors.input_background,
+            borderColor: error
+              ? theme.other_colors?.error
+              : theme.colors.primary,
             borderWidth: focused ? 2 : 0,
           },
           styles.input,
@@ -58,6 +58,20 @@ export default function InputWithLabel(props: IInputWithLabelProps) {
         selectionColor={theme.colors.primary}
         {...rest_input_props}
       />
+      {error ? (
+        <ThemedText
+          style={[
+            {
+              color: theme.other_colors?.error,
+            },
+            styles.error,
+            error_props ? error_styles : {},
+          ]}
+          {...(error_props ? rest_error_props : {})}
+        >
+          {error}
+        </ThemedText>
+      ) : null}
     </ThemedView>
   );
 }
@@ -79,5 +93,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     fontSize: 20,
     height: 50,
+  },
+  error: {
+    paddingRight: 5,
+    fontSize: 12,
+    marginTop: 10,
   },
 });

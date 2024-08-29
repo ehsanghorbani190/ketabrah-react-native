@@ -18,10 +18,18 @@ import {
 } from '@/core/state/slices/authSlice';
 import {openURL} from 'expo-linking';
 import {useTheme} from '@react-navigation/native';
+import usernameValidator from '@/core/helpers/usernameValidator';
+import {router} from 'expo-router';
+import {useEffect, useState} from 'react';
 export default function UsernamePage() {
   const username = useSelector(authUsernameSelector);
   const dispatch = useDispatch();
+  const [error, setError] = useState<null | string>(null);
   const theme = useTheme();
+
+  useEffect(() => {
+    dispatch(auth_setUsername(''));
+  }, []);
   return (
     <KeyboardAvoidingView style={styles.container} behavior="padding">
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -31,19 +39,30 @@ export default function UsernamePage() {
           <InputWithLabel
             input_props={{
               value: username,
-              onChangeText: text => dispatch(auth_setUsername(text)),
+              onChangeText: text => {
+                dispatch(auth_setUsername(text));
+                setError(null);
+              },
             }}
+            error={error}
             label={'شماره موبایل یا ایمیل خود را وارد کنید:'}
           />
           <ThemedButton
             title="ورود به کتابراه"
             buttonStyle={styles.button}
             textStyle={styles.buttonText}
+            onPress={_ => {
+              if (usernameValidator(username))
+                router.replace('/authentication/password-page');
+              else {
+                setError('لطفا شماره موبایل یا ایمیل معتبر وارد کنید.');
+              }
+            }}
           />
           <ThemedText style={styles.text}>
             با ورود به کتابراه،{' '}
             <TouchableOpacity
-              onPress={e => {
+              onPress={_ => {
                 openURL('https://ketabrah.ir/page/terms');
               }}
             >
