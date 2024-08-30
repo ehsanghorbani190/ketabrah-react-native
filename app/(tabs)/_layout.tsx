@@ -2,6 +2,7 @@ import {Tabs} from 'expo-router';
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import {
+  Feather,
   FontAwesome,
   MaterialCommunityIcons,
   MaterialIcons,
@@ -56,6 +57,17 @@ export default function TabLayout() {
           tabBarLabel: ({focused, children, color}) => (
             <TabBarLabel color={color} focused={focused} text={children} />
           ),
+          headerRight: _ => (
+            <Feather
+              name={'refresh-cw'}
+              size={20}
+              style={{
+                marginRight: 20,
+                color: theme.colors.primary,
+                transform: 'rotate(90deg)',
+              }}
+            />
+          ),
           tabBarIcon: ({color, focused, size}) => (
             <FontAwesome
               name={focused ? 'user-circle' : 'user-circle-o'}
@@ -72,6 +84,17 @@ export default function TabLayout() {
           title: 'کتابخانه‌من',
           tabBarLabel: ({focused, children, color}) => (
             <TabBarLabel color={color} focused={focused} text={children} />
+          ),
+          headerRight: _ => (
+            <Feather
+              name={'refresh-cw'}
+              size={20}
+              style={{
+                marginRight: 20,
+                color: theme.colors.primary,
+                transform: 'rotate(90deg)',
+              }}
+            />
           ),
           tabBarIcon: ({color, focused, size}) => (
             <Ionicons
