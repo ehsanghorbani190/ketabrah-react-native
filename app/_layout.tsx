@@ -15,6 +15,7 @@ import {
   auth_setUsername,
 } from '@/core/state/slices/authSlice';
 import useUserFromStorage from '@/hooks/useUserFromStorage';
+import LogoutConfirmationModal from '@/components/user-account/LogoutConfirmationModal';
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -41,6 +42,7 @@ export default function RootLayout() {
   return (
     <Provider store={store}>
       <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : LightTheme}>
+        <LogoutConfirmationModal />
         <Stack>
           <Stack.Screen
             name="authentication"
