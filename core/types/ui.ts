@@ -1,4 +1,5 @@
 import {
+  GestureResponderEvent,
   PressableProps,
   StyleProp,
   TextInputProps,
@@ -9,6 +10,7 @@ import {
 } from 'react-native';
 import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 import {Theme} from '@react-navigation/native';
+import {ReactNode} from 'react';
 
 export interface IThemedButtonProps extends PressableProps {
   textStyle?: StyleProp<TextStyle>;
@@ -41,4 +43,12 @@ export interface IExtendedTheme extends Theme {
     error: string;
     inactive_gray: string;
   };
+}
+
+export interface IUserAccountRowProps {
+  icon?: (style: StyleProp<TextStyle>) => ReactNode;
+  right: string | ReactNode;
+  left?: ReactNode | ((style: StyleProp<TextStyle>) => ReactNode);
+  onPress: (e: GestureResponderEvent) => void;
+  no_border?: boolean;
 }
