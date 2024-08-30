@@ -3,3 +3,6 @@ export interface IAuthState {
   password: string;
   user: Object | null;
 }
+export interface IUserAccountState {
+  logoutModalVisibility: boolean;
+}
