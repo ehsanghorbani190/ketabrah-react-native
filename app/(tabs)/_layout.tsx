@@ -6,13 +6,15 @@ import {
   FontAwesome,
   MaterialCommunityIcons,
   MaterialIcons,
+  Octicons,
 } from '@expo/vector-icons';
 import TabBarLabel from '@/components/TabBarLabel';
 import {useTheme} from '@react-navigation/native';
-import {Text} from 'react-native';
+import {Share, Text} from 'react-native';
 import {Image} from 'expo-image';
 import images from '@/constants/Images';
 import {IExtendedTheme} from '@/core/types/ui';
+import {openURL} from 'expo-linking';
 
 export default function TabLayout() {
   const theme: IExtendedTheme = useTheme();
@@ -27,7 +29,10 @@ export default function TabLayout() {
         tabBarInactiveTintColor: theme.other_colors?.inactive_gray,
         headerTitleAlign: 'center',
         headerShadowVisible: true,
-        headerStyle: {elevation: 10},
+        headerStyle: {
+          elevation: 4,
+          shadowColor: 'black',
+        },
         headerTitle: args =>
           args.children === 'خانه' ? (
             <Image
@@ -57,7 +62,7 @@ export default function TabLayout() {
           tabBarLabel: ({focused, children, color}) => (
             <TabBarLabel color={color} focused={focused} text={children} />
           ),
-          headerRight: _ => (
+          headerRight: () => (
             <Feather
               name={'refresh-cw'}
               size={20}
@@ -85,7 +90,7 @@ export default function TabLayout() {
           tabBarLabel: ({focused, children, color}) => (
             <TabBarLabel color={color} focused={focused} text={children} />
           ),
-          headerRight: _ => (
+          headerRight: () => (
             <Feather
               name={'refresh-cw'}
               size={20}
@@ -140,6 +145,45 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'خانه',
+          headerRight: () => (
+            <Octicons
+              style={{
+                paddingLeft: 10,
+                paddingRight: 20,
+                paddingVertical: 15,
+                color: theme.colors.primary,
+              }}
+              name={'question'}
+              size={20}
+              onPress={() => {
+                openURL('https://ketabrah.ir/page/help');
+              }}
+            />
+          ),
+          headerLeft: () => (
+            <Ionicons
+              name={'share-social'}
+              size={25}
+              style={{
+                color: theme.colors.primary,
+                paddingLeft: 20,
+                paddingRight: 10,
+                paddingVertical: 15,
+              }}
+              onPress={() => {
+                Share.share(
+                  {
+                    message:
+                      'من کتابراه را روی موبایلم نصب کردم. اپلیکیشن کتابراه امکان دسترسی به هزاران کتاب، رمان و مجله را از طریق موبایل و تبلت برای شما فراهم می‌کند. شما با استفاده از اپلیکیشن کتابراه همیشه و همه جا به کتابخانه خود دسترسی دارید و می توانید به سادگی از هر فرصتی برای مطالعه استفاده کنید. در کتابراه برای همه سلیقه‌ها از داستان و رمان تا روانشناسی و علمی و... کتاب‌هایی پیدا می‌شود.\n' +
+                      'دانلود رایگان:\n' +
+                      'https://ketabrah.ir/go/37',
+                    title: 'اشتراک‌گذاری',
+                  },
+                  {dialogTitle: 'اشتراک‌گذاری'}
+                );
+              }}
+            />
+          ),
           tabBarLabel: ({focused, children, color}) => (
             <TabBarLabel color={color} focused={focused} text={children} />
           ),
