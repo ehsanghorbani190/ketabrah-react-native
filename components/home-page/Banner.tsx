@@ -2,7 +2,7 @@ import {IExtendedTheme, TBannerProps} from '@/core/types/ui';
 import ThemedView from '@/components/ThemedView';
 import ThemedText from '@/components/ThemedText';
 import {Image} from 'expo-image';
-import {StyleSheet, Text, View} from 'react-native';
+import {Pressable, StyleSheet, Text, View} from 'react-native';
 import {useTheme} from '@react-navigation/native';
 
 export default function Banner({banner}: TBannerProps) {
@@ -21,7 +21,16 @@ export default function Banner({banner}: TBannerProps) {
             {text}
           </ThemedText>
         ))}
-        {/*TODO ADD BUTTON*/}
+        {banner.button ? (
+          <Pressable
+            style={[{backgroundColor: theme.colors.background}, styles.button]}
+            onPress={banner.button.onPress}
+          >
+            <ThemedText style={styles.buttonText}>
+              {banner.button.text}
+            </ThemedText>
+          </Pressable>
+        ) : null}
       </View>
     </View>
   );
@@ -35,6 +44,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     justifyContent: 'space-between',
     flexDirection: 'row',
+    elevation: 2,
+    shadowColor: '#000',
   },
   image: {height: 150, width: 190},
   textContainer: {
@@ -47,4 +58,15 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 16,
   },
+  button: {
+    alignSelf: 'flex-end',
+    elevation: 3,
+    shadowColor: 'black',
+    borderRadius: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {fontSize: 13},
 });
