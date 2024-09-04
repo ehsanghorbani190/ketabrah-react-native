@@ -86,6 +86,14 @@ export type TBookSlider = {
   books: TBook[];
   showMore: Function;
 };
+
+export type TBookSliderItemProps = {
+  book: TBook;
+  isFirst: boolean;
+  isLast: boolean;
+  sliderType: 'simple' | 'complex';
+};
+
 export type TFlatListItem = {
   type: 'chips' | 'banner' | 'list';
   data: THomeBanner | TCategoryChips[] | TBookSlider;

@@ -1,4 +1,4 @@
-import {TBook} from '@/core/types/ui';
+import {TBook, TBookSliderItemProps} from '@/core/types/ui';
 import ThemedView from '@/components/ThemedView';
 import {StyleSheet, View} from 'react-native';
 import ThemedText from '@/components/ThemedText';
@@ -11,17 +11,14 @@ export default function BookSliderItem({
   book,
   isFirst = false,
   isLast = false,
-}: {
-  book: TBook;
-  isFirst: boolean;
-  isLast: boolean;
-}) {
+  sliderType = 'simple',
+}: TBookSliderItemProps) {
   const theme = useTheme();
   return (
     <ThemedView
       style={[
         {
-          marginRight: isFirst ? 15 : 10,
+          marginRight: isFirst ? (sliderType === 'complex' ? 190 : 15) : 10,
           marginLeft: isLast ? 15 : 10,
         },
         styles.container,
@@ -49,11 +46,19 @@ export default function BookSliderItem({
         ) : null}
       </View>
       <View style={styles.infoContainer}>
-        <ThemedText style={styles.title} numberOfLines={1}>
+        <ThemedText
+          style={[sliderType === 'complex' && {color: '#FFFFFF'}, styles.title]}
+          numberOfLines={1}
+        >
           {book.title}
         </ThemedText>
         <View style={styles.subInfoContainer}>
-          <ThemedText style={styles.price}>
+          <ThemedText
+            style={[
+              sliderType === 'complex' && {color: '#FFFFFF'},
+              styles.price,
+            ]}
+          >
             {convertToPersianDigits(
               `${book.off ? (book.price * (100 - book.off)) / 100 : book.price}`
             )}{' '}
@@ -65,12 +70,20 @@ export default function BookSliderItem({
             </ThemedText>
           ) : book.rate ? (
             <ThemedView style={styles.rateContainer}>
-              <ThemedText style={styles.rateText}>
+              <ThemedText
+                style={[
+                  sliderType === 'complex' && {color: '#FFFFFF'},
+                  styles.rateText,
+                ]}
+              >
                 {convertToPersianDigits(`${book.rate}`)}
               </ThemedText>
               <MaterialCommunityIcons
                 name={'star'}
-                style={styles.rateIcon}
+                style={[
+                  sliderType === 'complex' && {color: '#FFFFFF'},
+                  styles.rateIcon,
+                ]}
                 size={12}
               />
             </ThemedView>
@@ -81,7 +94,7 @@ export default function BookSliderItem({
   );
 }
 const styles = StyleSheet.create({
-  container: {},
+  container: {backgroundColor: 'transparent'},
   imageContainer: {
     overflow: 'hidden',
     borderRadius: 10,
@@ -120,6 +133,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   rateContainer: {
+    backgroundColor: 'transparent',
     flexDirection: 'row-reverse',
     justifyContent: 'center',
     alignItems: 'center',
