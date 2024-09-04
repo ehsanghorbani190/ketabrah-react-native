@@ -42,6 +42,7 @@ export interface IExtendedTheme extends Theme {
     input_background: string;
     error: string;
     inactive_gray: string;
+    banner_background: string;
   };
 }
 
@@ -52,3 +53,40 @@ export interface IUserAccountRowProps {
   onPress: (e: GestureResponderEvent) => void;
   no_border?: boolean;
 }
+export type THomeBanner = {
+  text: string[];
+  image: any;
+  button?: {text: string; onPress: Function};
+};
+export type TBannerProps = {
+  banner: THomeBanner;
+};
+
+export type TCategoryChips = {text: string; link: string};
+export interface ICategoriesChipsProps {
+  containerProps?: ViewProps;
+  textProps?: TextProps;
+  data: TCategoryChips;
+}
+
+export type TBookType = 'audio' | 'text';
+export type TBook = {
+  title: string;
+  rate: number;
+  image: any;
+  off: number;
+  type: TBookType;
+  price: number;
+};
+
+export type TBookSlider = {
+  title: string;
+  subtitle?: string;
+  background?: {image: any; color: string};
+  books: TBook[];
+  showMore: Function;
+};
+export type TFlatListItem = {
+  type: 'chips' | 'banner' | 'list';
+  data: THomeBanner | TCategoryChips[] | TBookSlider;
+};
