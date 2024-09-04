@@ -10,5 +10,5 @@ async function setUser(action: PayloadAction<Object>) {
     await AsyncStorage.setItem('user', JSON.stringify(action.payload));
 }
 export default function* setUserSaga(action) {
-  yield takeLatest('auth/auth_setUsername', setUser);
+  yield takeLatest('auth/auth_setUser', setUser);
 }

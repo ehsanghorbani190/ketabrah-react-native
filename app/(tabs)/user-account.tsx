@@ -17,6 +17,7 @@ import {Image} from 'expo-image';
 import images from '@/constants/Images';
 import UserAccountInformationRow from '@/components/user-account/UserAccountInformationRow';
 import {setLogoutModalVisibility} from '@/core/state/slices/userAccountSlice';
+import {openURL} from 'expo-linking';
 export default function UserAccountScreen() {
   const theme = useTheme();
   const user = useSelector(authUserSelector);
@@ -73,21 +74,27 @@ export default function UserAccountScreen() {
       />
       <UserAccountRow
         right="مدیریت دستگاه‌ها"
-        onPress={e => {}}
+        onPress={() => {
+          openURL('https://ketabrah.ir/account/devices');
+        }}
         icon={style => (
           <MaterialIcons style={style} name={'devices'} size={25} />
         )}
       />
       <UserAccountRow
         right="راهنمایی و پشتیبانی"
-        onPress={e => {}}
+        onPress={() => {
+          openURL('https://ketabrah.ir/page/help');
+        }}
         icon={style => (
           <FontAwesome6 style={style} name={'circle-question'} size={25} />
         )}
       />
       <UserAccountRow
         right="شرایط استفاده"
-        onPress={e => {}}
+        onPress={() => {
+          openURL('https://ketabrah.ir/page/terms');
+        }}
         icon={style => (
           <MaterialCommunityIcons
             style={style}
@@ -98,10 +105,10 @@ export default function UserAccountScreen() {
       />
       <UserAccountRow
         right="درباره‌ی کتابراه"
-        onPress={e => {}}
-        icon={style => (
-          <Image source={images.logo} style={[styles.logo, style]} />
-        )}
+        onPress={() => {
+          openURL('https://ketabrah.ir/page/about');
+        }}
+        icon={() => <Image source={images.logo} style={styles.logo} />}
       />
       <UserAccountRow
         right="خروج از حساب کاربری"
@@ -122,5 +129,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 25,
     height: 25,
+    marginLeft: 15,
   },
 });

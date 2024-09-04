@@ -1,4 +1,4 @@
-import {TBook, TBookSliderItemProps} from '@/core/types/ui';
+import {TBookSliderItemProps} from '@/core/types/ui';
 import ThemedView from '@/components/ThemedView';
 import {StyleSheet, View} from 'react-native';
 import ThemedText from '@/components/ThemedText';

@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {IAuthState} from '@/core/types/state';
+import {TUser} from '@/core/types/data';
 
 const initialState: IAuthState = {
   username: '',
@@ -17,7 +18,7 @@ export const authSlice = createSlice({
     auth_setPassword: (state: IAuthState, action: PayloadAction<string>) => {
       state.password = action.payload;
     },
-    auth_setUser: (state: IAuthState, action: PayloadAction<Object>) => {
+    auth_setUser: (state: IAuthState, action: PayloadAction<TUser | null>) => {
       state.user = action.payload;
     },
   },

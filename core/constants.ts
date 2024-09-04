@@ -1,5 +1,6 @@
 import images from '@/constants/Images';
 import {TFlatListItem} from '@/core/types/ui';
+import {TUser} from '@/core/types/data';
 
 export const home_items: TFlatListItem[] = [
   {
@@ -172,3 +173,10 @@ export const home_items: TFlatListItem[] = [
     },
   },
 ];
+
+export const userMock: TUser = {
+  first_name: 'احسان',
+  last_name: 'قربانی',
+  email: 'ehsanghorbani190@gmail.com',
+  phone: '09156646936',
+};

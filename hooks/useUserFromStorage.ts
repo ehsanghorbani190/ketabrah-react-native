@@ -6,7 +6,7 @@ import {auth_setUser} from '@/core/state/slices/authSlice';
 export default function useUserFromStorage() {
   const [loaded, setLoaded] = useState(false);
   AsyncStorage.getItem('user').then(user => {
-    store.dispatch(auth_setUser(user));
+    store.dispatch(auth_setUser(user === null ? null : JSON.parse(user)));
     setLoaded(true);
   });
   return loaded;

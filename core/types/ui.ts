@@ -11,6 +11,7 @@ import {
 import {NativeStackHeaderProps} from '@react-navigation/native-stack';
 import {Theme} from '@react-navigation/native';
 import {ReactNode} from 'react';
+import {TBook} from '@/core/types/data';
 
 export interface IThemedButtonProps extends PressableProps {
   textStyle?: StyleProp<TextStyle>;
@@ -68,16 +69,6 @@ export interface ICategoriesChipsProps {
   textProps?: TextProps;
   data: TCategoryChips;
 }
-
-export type TBookType = 'audio' | 'text';
-export type TBook = {
-  title: string;
-  rate: number;
-  image: any;
-  off: number;
-  type: TBookType;
-  price: number;
-};
 
 export type TBookSlider = {
   title: string;

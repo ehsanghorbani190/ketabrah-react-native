@@ -18,6 +18,7 @@ import {
 import {openURL} from 'expo-linking';
 import {router} from 'expo-router';
 import {useTheme} from '@react-navigation/native';
+import {userMock} from '@/core/constants';
 export default function PasswordPage() {
   const password = useSelector(authPasswordSelector);
   const theme = useTheme();
@@ -64,8 +65,8 @@ export default function PasswordPage() {
             textStyle={styles.buttonText}
             onPress={_ => {
               // TODO validate user via sagas and then move to the home page
-              dispatch(auth_setUser({}));
-              router.replace('/(tabs)/user-account');
+              dispatch(auth_setUser(userMock));
+              router.back();
             }}
           />
         </ThemedView>
