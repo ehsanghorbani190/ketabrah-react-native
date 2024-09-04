@@ -101,6 +101,15 @@ export default function TabLayout() {
               }}
             />
           ),
+          headerLeft: props => {
+            return (
+              <MaterialCommunityIcons
+                name={'bookmark-multiple-outline'}
+                size={25}
+                style={{marginLeft: 20, color: theme.colors.primary}}
+              />
+            );
+          },
           tabBarIcon: ({color, focused, size}) => (
             <Ionicons
               name={focused ? 'book' : 'book-outline'}
