@@ -14,6 +14,7 @@ export const LightTheme: IExtendedTheme = {
     input_background: '#dddddd',
     error: '#FF3F34',
     inactive_gray: '#333333',
+    banner_background: '#1F844C',
   },
 };
 
@@ -31,5 +32,6 @@ export const DarkTheme: IExtendedTheme = {
     input_background: '#333333',
     inactive_gray: '#999999',
     error: '#FF5E57',
+    banner_background: '#1F844C',
   },
 };
